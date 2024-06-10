@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<style>
+ .padding {
+    background-color: #010101bf;
+    color: white;
+    padding: 1rem; 
+    position: fixed; 
+    top: 0; 
+    width: 100%; 
+    z-index: 1000; 
+} 
+.containimage{
+    background-image: url("{{ url_for('static', filename='newspaper.jpg') }}");
+}
+</style>
+{% endblock %}
+
+{% block body %}
+
+<nav class="padding">
+    <h4>Fake News Prediction</h4>
+</nav>
+<div style="margin-top: 60px;">
+ 
+   <div class="containimage">
+        <div class="container-fluid">
+            <div class="container">
+                <div class="row">
+                  <div class="col-4">
+                         <form action="/predict" method="POST">
+                         <br><br>
+                         <input  class="form-control me-2" type="text" id="predict" name="predict" >
+                         <button class="btn btn-success" type="submit">Search</button>
+                         <br><br><br>
+                        </form>
+                  </div>
+                  
+                  
+                </div>
+            </div>
+        </div>
+   </div>
+<div>
+    {% if prediction_text == 0 %}
+     <h2 style="text-align: center ;" >Looking Fake News</h2>
+     {% elif prediction_text == 1 %}
+    <h2 style="text-align: center;"  ><b>Looking Real News</b></h2>
+    {% endif %}
+</div>
+ 
+  
+     <div class="container text-center">
+        <div class="row">
+          <div class="col">
+            <br><br><br>
+            <p >
+                The Fake News Detection project uses logistic regression to classify news as fake or real. It involves data collection, preprocessing, feature selection, model training, and evaluation. The model, once validated, helps combat misinformation by accurately identifying fake news, promoting informed decision-making and enhancing media literacy.
+            </p>
+     </div>
+          <div class="col">
+             
+             <img  class="rounded float-end" src="{{ url_for('static', filename='news.jpg') }}"  height="400" width="800" >
+
+       </div>
+       </div>
+       <br><br>
+</div>    
+
+        
+
+      
+            
+
+            
+                
+         
+    <footer style="text-align: end;" class="py-4 bg-dark text-white-50">
+        <div class="container text-center">
+          <ul style="text-align: center;" class="list-group">
+          
+            <li >Name : Rishabh  ,  Mobile Number : 8059699169</li>
+            <li >Mail : rishurajput9927@gmail.com</li>
+          </ul>
+        </div>
+    </footer>
+</div>    
+{% endblock %}
+<script></script>
